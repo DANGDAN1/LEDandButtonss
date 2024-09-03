@@ -1,0 +1,51 @@
+#imports
+import board
+import digitalio as dio
+import time
+
+#setup / initialization
+led = dio.DigitalInOut(board.D2)
+led.direction = dio.Direction.OUTPUT
+
+
+def dot():
+    led.value = True
+    time.sleep(0.5)
+    led.value = False
+    time.sleep(0.5)
+
+
+def dash():
+    led.value = True
+    time.sleep(1)
+    led.value = False
+    time.sleep(0.5)
+
+
+#infinite loop
+while True:
+    #D
+    dash()
+    dot()
+    dot()
+
+    #a
+    dot()
+    dash()
+
+    #n
+    dash()
+    dot()
+
+    #i
+    dot()
+    dot()
+
+    #e
+    dot()
+
+    #l
+    dot()
+    dash()
+    dot()
+    dot()
