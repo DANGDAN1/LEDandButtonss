@@ -4,7 +4,7 @@ import digitalio as dio
 import time
 
 #setup / initialization
-def set_pin_led(pin):
+def set_pin_leds(pin):
     led = dio.DigitalInOut(pin)
     led.direction = dio.Direction.OUTPUT
     return led
@@ -13,7 +13,7 @@ led2 = set_pin_led(board.D3)
 led3 = set_pin_led(board.D4)
 led4 = set_pin_led(board.D5)
 
-    def blink(led):
+    def blinkled(led):
         led.value = not led.value
         time.sleep(0.1)
         led.value = not led.value
