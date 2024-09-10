@@ -1,0 +1,41 @@
+import board
+import digitalio as dio
+import time
+from digitalio import DigitalInOut, Direction
+
+b1 = DigitalInOut(board.D2)
+b2 = DigitalInOut(board.D3)
+
+b1.direction = Direction.INPUT
+b2.direction = Direction.INPUT
+
+led1 = DigitalInOut(board.D4)
+led2 = DigitalInOut(board.D5)
+
+led1.direction = Direction.OUTPUT
+led2.direction = Direction.OUTPUT
+
+led_status = False
+led_status1 = False
+while True:
+    if not b1.value:
+        led_status = not led_status
+        time.sleep(.2)
+        
+        
+    if led_status:
+        led_status = False
+        led1.value = not led1.value
+        led2.value = not led1.value
+        
+    if not b2.value:
+        led_status1 = not led_status1
+        time.sleep(.2)
+        
+        
+    if led_status1:
+        led_status1 = False
+        led1.value = not led1.value
+        led2.value = led1.value
+       
+        
